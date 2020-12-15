@@ -21,12 +21,7 @@ const DayTwo = () => {
         <button onClick={() => setData(finalData)}>final</button> data...
       </p>
       <p>
-        <textarea
-          rows="10"
-          cols="50"
-          value={data}
-          onChange={(e) => setData(e.target.value)}
-        />
+        <textarea rows="10" cols="50" value={data} />
       </p>
       <p>
         The number of valid passwords is{" "}
