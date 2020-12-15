@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import DayOne from "./pages/DayOne/";
 import DayTwo from "./pages/DayTwo/";
+import DayThree from "./pages/DayThree/";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/days/2">
           <DayTwo />
+        </Route>
+        <Route path="/days/3">
+          <DayThree />
         </Route>
       </main>
     </Router>
