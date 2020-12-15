@@ -28,15 +28,21 @@ const DayOne = () => {
           onChange={(e) => setData(e.target.value)}
         />
       </p>
-      {result?.expenseItems && (
+      {result?.twoItemsSum2020 && (
         <p>
-          The two matching expense items are <em>{result.expenseItems[0]}</em>{" "}
-          and <em>{result.expenseItems[1]}</em>.
+          Two items that sum 2020 are{" "}
+          <em>{result.twoItemsSum2020.expenseItems[0]}</em> and{" "}
+          <em>{result.twoItemsSum2020.expenseItems[1]}</em> which multiplied
+          together is <em>{result.twoItemsSum2020.result}</em>.
         </p>
       )}
-      {result?.result && (
+      {result?.threeItemsSum2020 && (
         <p>
-          The result of multiplying these together is <em>{result.result}</em>.
+          Three items that sum 2020 are{" "}
+          <em>{result.threeItemsSum2020.expenseItems[0]}</em>,{" "}
+          <em>{result.threeItemsSum2020.expenseItems[1]}</em> and{" "}
+          <em>{result.threeItemsSum2020.expenseItems[2]}</em> which multiplied
+          together is <em>{result.threeItemsSum2020.result}</em>.
         </p>
       )}
     </article>
