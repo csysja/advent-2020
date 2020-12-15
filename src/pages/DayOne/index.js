@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 
 import testData from "./testData";
 import finalData from "./finalData";
-import GetResult from "./GetResult";
+import getResult from "./getResult";
 
 const DayOne = () => {
   const [data, setData] = useState(testData);
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    setResult(GetResult(data));
+    setResult(getResult(data));
   }, [data]);
   return (
     <article>

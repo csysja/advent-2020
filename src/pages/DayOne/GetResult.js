@@ -35,7 +35,7 @@ const GetProductOfNumbersThatSum2020 = (expenseArray, numberOfNumbers) => {
   return { expenseItems, result };
 };
 
-const GetResult = (expenses) => {
+const getResult = (expenses) => {
   // turn string into array of numbers
   const expenseArray = expenses
     .split(/\r?\n/)
@@ -48,4 +48,4 @@ const GetResult = (expenses) => {
   };
 };
 
-export default GetResult;
+export default getResult;
