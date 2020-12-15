@@ -29,8 +29,14 @@ const DayTwo = () => {
         />
       </p>
       <p>
-        The number of valid passwords is <em>{result}</em> in the old job
-        password policy
+        The number of valid passwords is{" "}
+        <em>{result.numValidOldPasswordPolicy}</em> in the old job password
+        policy
+      </p>
+      <p>
+        The number of valid passwords is{" "}
+        <em>{result.numValidNewPasswordPolicy}</em> in the current job password
+        policy
       </p>
     </article>
   );
