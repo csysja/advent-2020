@@ -86,3 +86,33 @@ article h2 {
   margin-bottom: 1em;
   white-space: nowrap;
 }
+
+button {
+  font-family: monospace;
+  background: #0f0f23;
+  color: #009900;
+  border-color: #009900;
+  border-style: solid;
+  font-size: 14pt;
+}
+
+button:focus {
+  outline: none;
+  border-color: #00cc00;
+}
+
+button:hover {
+  color: #00cc00;
+}
+
+textarea {
+  background-color: #000000;
+  color: #cccccc;
+  border-color: #009900;
+}
+
+article em {
+  color: #ffff66;
+  font-style: normal;
+  text-shadow: 0 0 5px #ffff66;
+}
