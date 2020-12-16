@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import testData from "./testData";
 import finalData from "./finalData";
@@ -18,7 +18,7 @@ const DayThree = () => {
     return result;
   };
 
-  const calculateSlope = (data, slope) => {
+  const calculateSlope = useCallback((data, slope) => {
     const lines = data.split(/\r?\n/); // split by new line
     const xMovementPerLine = (slope.right * 1.0) / slope.down; // move in x for each line
     const requiredWidth = lines.length * xMovementPerLine; // calculate how wide needs to fit slope
@@ -43,12 +43,12 @@ const DayThree = () => {
       grid: result.join("\r\n"),
       numOfTrees: result.filter((r) => r.includes("X")).length, // calculate num tree hits
     };
-  };
+  }, []);
 
   useEffect(() => {
     const result = calculateSlope(data, slope);
     setResult(result);
-  }, [data, slope]);
+  }, [data, slope, calculateSlope]);
 
   useEffect(() => {
     let treeHits = [];
@@ -57,9 +57,8 @@ const DayThree = () => {
     treeHits.push(calculateSlope(data, { right: 5, down: 1 }).numOfTrees);
     treeHits.push(calculateSlope(data, { right: 7, down: 1 }).numOfTrees);
     treeHits.push(calculateSlope(data, { right: 1, down: 2 }).numOfTrees);
-    console.log(treeHits);
     setFinalResult(treeHits.reduce((p, c) => p * c));
-  }, [data]);
+  }, [data, calculateSlope]);
 
   return (
     <article>
@@ -80,34 +79,34 @@ const DayThree = () => {
           toggle textarea
         </button>{" "}
         to show this slope. You can switch to a different slope
-        <ul>
-          <li>
-            <button onClick={() => setSlope({ right: 1, down: 1 })}>
-              right 1 down 1
-            </button>
-          </li>
-          <li>
-            <button onClick={() => setSlope({ right: 3, down: 1 })}>
-              right 3 down 1
-            </button>
-          </li>
-          <li>
-            <button onClick={() => setSlope({ right: 5, down: 1 })}>
-              right 5 down 1
-            </button>
-          </li>
-          <li>
-            <button onClick={() => setSlope({ right: 7, down: 1 })}>
-              right 7 down 1
-            </button>
-          </li>
-          <li>
-            <button onClick={() => setSlope({ right: 1, down: 2 })}>
-              right 1 down 2
-            </button>
-          </li>
-        </ul>
       </p>
+      <ul>
+        <li>
+          <button onClick={() => setSlope({ right: 1, down: 1 })}>
+            right 1 down 1
+          </button>
+        </li>
+        <li>
+          <button onClick={() => setSlope({ right: 3, down: 1 })}>
+            right 3 down 1
+          </button>
+        </li>
+        <li>
+          <button onClick={() => setSlope({ right: 5, down: 1 })}>
+            right 5 down 1
+          </button>
+        </li>
+        <li>
+          <button onClick={() => setSlope({ right: 7, down: 1 })}>
+            right 7 down 1
+          </button>
+        </li>
+        <li>
+          <button onClick={() => setSlope({ right: 1, down: 2 })}>
+            right 1 down 2
+          </button>
+        </li>
+      </ul>
       {result && showTextArea && (
         <textarea
           rows={result.rows}
