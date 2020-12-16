@@ -21,7 +21,7 @@ const DayTwo = () => {
         <button onClick={() => setData(finalData)}>final</button> data...
       </p>
       <p>
-        <textarea rows="10" cols="50" value={data} />
+        <textarea rows="10" cols="50" value={data} readOnly />
       </p>
       <p>
         The number of valid passwords is{" "}
