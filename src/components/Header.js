@@ -24,6 +24,9 @@ const Header = () => {
           <li>
             <Link to="/days/4">[4]</Link>
           </li>
+          <li>
+            <Link to="/days/5">[5]</Link>
+          </li>
         </ul>
       </nav>
     </header>

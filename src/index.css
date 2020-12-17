@@ -115,3 +115,11 @@ article em {
   font-style: normal;
   text-shadow: 0 0 5px #ffff66;
 }
+
+table,
+th,
+td {
+  border: 1px solid #009900;
+  border-collapse: collapse;
+  padding: 5px;
+}
