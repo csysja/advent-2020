@@ -47,16 +47,17 @@ const DayFive = () => {
     };
   }, []);
 
-  const getMySeatId = useCallback((maxSeatId, boardingPassesWithDetails) => {
-    let mySeatId = null;
-    let currentSeatId = maxSeatId;
-    while (!mySeatId && currentSeatId > 0) {
-      if (!boardingPassesWithDetails.some((b) => b.seatId === currentSeatId)) {
-        mySeatId = currentSeatId;
-      }
-      currentSeatId -= 1;
-    }
-    return mySeatId;
+  const getMySeatId = useCallback((boardingPassesWithDetails) => {
+    // sort seat ids
+    let sortedBoardingPasses = boardingPassesWithDetails
+      .map((b) => b.seatId)
+      .sort((a, b) => a - b);
+    // find first without following seatId 1 greater
+    var seatWithNoFollowingNumber = sortedBoardingPasses.filter(
+      (currentBoardingPass, i, passes) =>
+        passes[i + 1] !== currentBoardingPass + 1
+    )[0];
+    return seatWithNoFollowingNumber + 1;
   }, []);
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const DayFive = () => {
     const maxSeatId = boardingPassesWithDetails
       .map((b) => b.seatId)
       .reduce((p, c) => (c > p ? c : p), []);
-    const mySeatId = getMySeatId(maxSeatId, boardingPassesWithDetails);
+    const mySeatId = getMySeatId(boardingPassesWithDetails);
 
     setResult({ boardingPassesWithDetails, maxSeatId, mySeatId });
   }, [data, getSeatDetails, getMySeatId]);
