@@ -7,6 +7,7 @@ import DayTwo from "./pages/DayTwo/";
 import DayThree from "./pages/DayThree/";
 import DayFour from "./pages/DayFour/";
 import DayFive from "./pages/DayFive/";
+import DaySix from "./pages/DaySix/";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/days/5">
           <DayFive />
+        </Route>
+        <Route path="/days/6">
+          <DaySix />
         </Route>
       </main>
     </Router>
