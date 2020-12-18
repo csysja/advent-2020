@@ -6,6 +6,7 @@ import finalData from "./finalData";
 const DaySix = () => {
   const [data, setData] = useState(testData);
   const [result, setResult] = useState(null);
+  const [showGroup, setShowGroup] = useState(false);
 
   const getQuestions = useCallback(() => {
     let result = [];
@@ -77,11 +78,16 @@ const DaySix = () => {
         The sum of questions where <em>all</em> in the group answered yes is{" "}
         <em>{result?.totalAllYesCount}</em>.
       </p>
+      <p>
+        <button onClick={() => setShowGroup((showGroup) => !showGroup)}>
+          toggle show group
+        </button>
+      </p>
       <table>
         <thead>
           <tr>
             <th>group number</th>
-            {/*<th>group</th>*/}
+            {showGroup && <th>group</th>}
             <th>
               questions <em>some</em> answered yes
             </th>
@@ -94,7 +100,7 @@ const DaySix = () => {
           {result?.groupsWithQuestions?.map((group, i) => (
             <tr key={group.group}>
               <td>{i + 1}</td>
-              {/* <td>{group.group.join(",")} */}
+              {showGroup && <td>{group.group.join(",")}</td>}
               <td>{group.questionsSomeYes}</td>
               <td>{group.questionsAllYes}</td>
             </tr>
